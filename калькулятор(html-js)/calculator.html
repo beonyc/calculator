@@ -1,0 +1,105 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>calculator</title>
+        <style> 
+        body{ user-select: none;
+            
+        }
+        .container{
+           display: grid; 
+           grid-template-columns:  1fr 1fr 1fr 1fr;
+           grid-gap: 4px;
+           background-color: gray;
+           padding: 9px;
+           border-radius: 5px;
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           max-width: 460px;
+           height: 460px;
+        }
+        .position{
+            margin:40px 40px;
+        }
+        .item{
+            background-color: orange;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 40px;
+            
+            
+        }
+        form{max-width: 100%;}
+        input{
+            width: 99%;
+            height: 60px;
+            border: none;
+            font-size: 44px;
+            outline: none;
+            text-align: right;
+        }
+        .input{grid-column: 1/-1;padding: 0;}
+        .clean{
+            grid-column: 1/4;
+        }
+        .equal{
+           grid-column: 3/5;
+        }
+        .col{
+            background-color: white;
+        }
+        .qq{grid-column:1/3;}
+        .ww{grid-column:3/5;}
+        </style>
+    </head>
+ <body>
+<div class="container position">
+    <div class="item input col"><form name="form"><input type="text" name="textview" readonly></form></div>
+    <div class="item clean" onclick="clean()">Clean</div>
+    <div class="item" onclick="insert('/')">/</div>
+    <div class="item" onclick="insert('7')">7</div>
+    <div class="item" onclick="insert('8')">8</div>
+    <div class="item" onclick="insert('9')">9</div>
+    <div class="item" onclick="insert('*')">x</div>
+    <div class="item" onclick="insert('4')">4</div>
+    <div class="item" onclick="insert('5')">5</div>
+    <div class="item" onclick="insert('6')">6</div>
+    <div class="item" onclick="insert('-')">-</div>
+    <div class="item" onclick="insert('1')">1</div>
+    <div class="item" onclick="insert('2')">2</div>
+    <div class="item" onclick="insert('3')">3</div>
+    <div class="item" onclick="insert('+')">+</div>
+    <div class="item zero" onclick="insert('0')" >0</div>
+    <div class="item" onclick="insert('.')">.</div>
+    <div class="item equal" onclick="equal()">=</div>
+    <div class="item qq" onclick="insert('(')">(</div>
+    <div class="item ww" onclick="insert(')')">)</div>
+</div>
+<script>
+
+function insert(num){
+    document.form.textview.value=document.form.textview.value + num;
+}
+function clean(){
+    document.form.textview.value='';
+}
+function equal(){
+    var answer=document.form.textview.value;
+    
+    if (answer)
+    {
+        var otvet=eval(answer);
+
+        if (answer.endsWith('/0'))
+         document.form.textview.value='Ali Gey';
+        else  document.form.textview.value=otvet;
+    }
+    
+}
+
+</script>
+ </body>   
+</html>
